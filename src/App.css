@@ -1,11 +1,17 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    background-color: rgb(79, 80, 90);
+    background: linear-gradient(to bottom right, 
+    rgb(49, 48, 48), 
+    rgb(27, 27, 27), 
+    rgb(36, 35, 35), 
+    rgb(36, 35, 35), 
+    rgb(34, 33, 33), 
+    rgb(37, 35, 35));
 }
 
 /* @ Picture Of The Day */
@@ -14,7 +20,10 @@ body {
     width: 95%;
     margin: auto;
     border-radius: 3px;
+    max-height: 300px; 
+    object-fit: contain;
 }
+
 
 .title {
     color: whitesmoke;
@@ -61,4 +70,35 @@ body {
     padding: 10px;
     color: rgb(185, 185, 181);
     line-height: 1.6em;
+}
+
+.video {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    background-color: rgb(32, 63, 83);
+    padding: 10px 0px;
+}
+
+.actualVideo {
+    text-decoration: none;
+    color: orange;
+    display: inline-block;
+    width: 100%;
+}
+
+/* @ NavBar */
+
+.navtitle {
+    color: whitesmoke;
+    font-size: 32px;
+    /* text-align: center; */
+    padding: 10px;
+    font-weight: bold;
+}
+
+.loading {
+    font-size: 40px;
+    color: orange;
+    text-align: center;
 }
