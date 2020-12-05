@@ -1,44 +1,42 @@
-import React,{ useState, useEffect } from 'react';
-import Axios from 'axios'; 
+import React,{ Fragment, useEffect, useState } from 'react';
+import { pictureOfTheDay } from '../utils/utils';
 
-export default function PictureOfTheDay() {
-    let [ pictureOfTheDay, setPictureOfTheDay ] = useState({});
-    let [ imageOrNot, setImageOrNot ] = useState(false)
-    let [ available, setAvailable ] = useState(false);
+export default function PitureOfTheDay() {
+
+    const [ potd, setPotd ] = useState({});
+    const [ notAvailable, setNotAvailable ] = useState(false);
+    const date = new Date().toLocaleDateString();
 
     useEffect(()=>{
-        async function getPictureOfTheDay(){
-            let { data } = await Axios.get(`https://api.nasa.gov/planetary/apod?api_key=IWzif6oTa6550M09AqRTw8kK3gumG9VfjqR20dnL`);
-            setPictureOfTheDay(data);
-            setAvailable(true)
-            if(pictureOfTheDay.media_type === "image"){
-                setImageOrNot(true)
-            }
-        }
-        getPictureOfTheDay()
-    },[pictureOfTheDay.media_type])
+        pictureOfTheDay()
+        .then(data=>{setPotd(data);console.log(data)})
+        .catch(()=>{setNotAvailable(true)})
+    },[])
 
-    if(!available){
-        return <div className="loading">Loading...</div>
+    if(notAvailable){
+        return (
+                <div className="nopotd">No Picture Of The Day For {date}<br/>😥😥😥😥</div>
+        )
     }
 
-    return (
-        <div className="pictureOfTheDayContainer">
-            <div className="picture">Today's {imageOrNot? "Picture" : "Video"}</div>
-            <div className="title">{pictureOfTheDay.title}</div>
-            {imageOrNot? (
-                <img src={pictureOfTheDay.hdurl} alt="PictureOfTheDay" className="pictureOfTheDay"/>
-            ):(
-                <div className="video">
-                    <a href={pictureOfTheDay.url} target="_blank" rel="noopener noreferrer" className="actualVideo">Click it to see the video</a>
-                </div>
-            )}
+    if(potd.media_type==="image"){
+      return (
+        <Fragment>
+          <div className="title">{potd.title}</div>
+          <img src={potd.hdurl} alt={potd.title} className="picture"/>
+          <div className="copyright">Copyright by <span>{potd.copyright}</span></div>
+          <div className="explanation">{potd.explanation}</div>
+        </Fragment>
+      );
+    }
 
-            <div className="copyright">Copyright by {pictureOfTheDay.copyright}</div>
-            <div className="explanation">
-                {pictureOfTheDay.explanation}
-            </div>
-        </div>
+    return(
+      <Fragment>
+          <div className="title">{potd.title}</div>
+          <div className="explanation">This is a Video</div>
+          <div className="copyright">Copyright by <span>{potd.copyright}</span></div>
+          <div className="explanation">{potd.explanation}</div>
+        </Fragment>
     )
-}
 
+}
