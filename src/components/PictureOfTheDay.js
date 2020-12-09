@@ -24,7 +24,7 @@ export default function PitureOfTheDay() {
         <Fragment>
           <div className="title">{potd.title}</div>
           <img src={potd.hdurl} alt={potd.title} className="picture"/>
-          <div className="copyright">Copyright by <span>{potd.copyright}</span></div>
+          {potd.copyright?(<div className="copyright">Copyright by <span>{potd.copyright}</span></div>):null}
           <div className="explanation">{potd.explanation}</div>
         </Fragment>
       );
@@ -34,7 +34,7 @@ export default function PitureOfTheDay() {
       <Fragment>
           <div className="title">{potd.title}</div>
           <div className="explanation">This is a Video</div>
-          <div className="copyright">Copyright by <span>{potd.copyright}</span></div>
+          {potd.copyright?(<div className="copyright">Copyright by <span>{potd.copyright}</span></div>):null}
           <div className="explanation">{potd.explanation}</div>
         </Fragment>
     )

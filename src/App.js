@@ -4,9 +4,10 @@ import PictureOfTheDay from './components/PictureOfTheDay';
 import './App.css';
 import NavBar from './components/NavBar';
 
-//! Components
+//@ Components
 import Asteroids from './components/Asteroids';
 import IndividualAsteroid from './components/IndividualAsteroid';
+import NaturalEvents from './components/NaturalEvents';
 
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
             <Route path="/" exact component={PictureOfTheDay} />
             <Route path="/asteroids" component={Asteroids} exact/>
             <Route path="/asteroids/:id" component={IndividualAsteroid}/>
+            <Route path="/natural-events" component={NaturalEvents}/>
         </Router>
     )
 }

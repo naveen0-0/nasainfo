@@ -32,7 +32,9 @@ body{
     text-decoration: none;
     padding: 20px;
     text-align: center;
-    color: rgb(0, 128, 68);
+    font-size: 12px;
+    color: cornflowerblue;
+    font-weight: 500;
 }
 
 /* @ Burger */
@@ -70,8 +72,8 @@ body{
 }
 .picture {
     display: block;
-    width: 90%;
-    height: 400px;
+    width: 95%;
+    height: 100%;
     margin: auto;
     object-fit: cover;
 }
@@ -91,7 +93,7 @@ body{
     color: rgb(167, 164, 164);
     width: 90%;
     text-align: center;
-    margin: auto;
+    margin: 10px auto;
     font-size: 18px;
     line-height: 2em;
 }
@@ -100,7 +102,6 @@ body{
 
 .asteroid{
     background-color: rgb(53, 46, 46);
-    /* margin: 20px 0px; */
     padding: 40px 10px;
     border-radius: 4px;
     position: relative;
@@ -295,3 +296,15 @@ table,th,td{
     color:  rgb(0, 128, 85);
 }
 
+
+/* @ Natural Events */
+.noevents{
+    color: whitesmoke;
+    text-align: center;
+    font-size: 40px;
+}
+
+.eventImage{
+    width: 30px;
+    height: 30px;
+}
