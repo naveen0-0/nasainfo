@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { neoLookUp } from '../utils/utils';
+import Spinner from './Spinner';
 
 export default function IndividualAsteroid({ match }) {
 
@@ -18,7 +19,7 @@ export default function IndividualAsteroid({ match }) {
     }, [match.params.id])
 
     if (!available) {
-        return <div className="nopotd">Loading...</div>
+        return <Spinner/>
     }
 
     return (

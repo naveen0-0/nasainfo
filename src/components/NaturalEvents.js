@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import ReactMapGl, { Marker, Popup } from 'react-map-gl';
 import { naturalEvents } from '../utils/utils';
+import Spinner from './Spinner';
 
 
 const NaturalEvents = () => {
@@ -25,16 +26,18 @@ const NaturalEvents = () => {
     }, [])
 
     if (!events) {
-        return <div className="noevents">Loading</div>
+        return <Spinner />
     }
 
     return (
         <Fragment>
+            <div className="underConstruction">
+                Under Construction
+            </div>
             <ReactMapGl {...viewport}
                 mapboxApiAccessToken="pk.eyJ1IjoibmF2ZWVuMC0wIiwiYSI6ImNraWR4cHVldzA0b2Eyd3F1ZGx4OXJjNHEifQ.ku87miTrJw_eaiJLWk8eTA"
                 onViewportChange={viewport => setViewport(viewport)}
                 mapStyle="mapbox://styles/naveen0-0/ckieakckt3go11ant41jc3nx0">
-                
             </ReactMapGl>
         </Fragment>
     )

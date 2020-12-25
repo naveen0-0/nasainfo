@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { formatDate, neoFeed, formatYesterDayDate } from '../utils/utils';
 import Asteroid from './Asteroid';
+import Spinner from './Spinner';
 
 
 export default function Asteroids() {
@@ -33,7 +34,7 @@ export default function Asteroids() {
 
     if (!available) {
         return (
-            <div className="nopotd">Loading ...</div>
+            <Spinner/>
         )
     }
 
